@@ -1,25 +1,29 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany, Unique } from 'typeorm'
-import Token from './token.entity'
-import Task from './task.entity'
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany, Unique } from 'typeorm';
+import Token from './token.entity';
+import Task from './task.entity';
+import Perfil from './perfil.entity'; 
 
 @Entity()
 @Unique(["email"])
 export default class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id!: number
+  id!: number;
 
   @Column()
-  name!: string
+  name!: string;
 
   @Column()
-  email!: string
+  email!: string;
 
   @Column()
-  password!: string
+  password!: string;
 
   @OneToMany(() => Token, token => token.user)
-  tokens!: Token[]  
+  tokens!: Token[];
 
   @OneToMany(() => Task, task => task.user)
-  tasks!: Task[]  
+  tasks!: Task[];
+
+  @OneToMany(() => Perfil, perfil => perfil.user) 
+  perfis!: Perfil[]; 
 }
