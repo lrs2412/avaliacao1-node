@@ -1,5 +1,5 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import User from './user.entity'; // Importa a entidade User
+import User from './user.entity'; 
 
 @Entity()
 export default class Perfil extends BaseEntity {
@@ -18,6 +18,6 @@ export default class Perfil extends BaseEntity {
   @Column()
   descricao!: string;
 
-  @ManyToOne(() => User, user => user.perfis) // Define a relação ManyToOne com a entidade User
-  user!: User; // Adiciona a propriedade user
+  @ManyToOne(() => User, user => user.perfis) 
+  user!: User; 
 }
